@@ -6,7 +6,6 @@
 }
 
 * {
-  margin: 0;
   box-sizing: border-box;
   font-family: arial, helvetica, sans-serif;
   font-size: 30px;
@@ -16,6 +15,7 @@ body {
   @include display-cenetr;
   flex-direction: column;
   height: 100vh;
+  margin: 0;
 }
 
 .calendar {
@@ -27,7 +27,7 @@ body {
     @include display-cenetr;
     width: 100px;
     height: 100px;
-    margin: 1px;
+    margin: 0.5px;
     background-color: #eee;
     border: 1px solid black;
   }
@@ -57,7 +57,7 @@ $days_month: (28,29,30,31);
 $week-day:("mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6, "sun":7);
 @each $name-day,$num-day in $week-day {
   $size: 101px;
-  $margin:($num-day*$size)-$size;
+  $margin:($num-day*$size+1.5px)-$size;
   .calendar-#{$name-day} :first-child {
     margin-left: $margin;
   }
