@@ -7,8 +7,6 @@
 
 * {
   box-sizing: border-box;
-  font-family: arial, helvetica, sans-serif;
-  font-size: 30px;
 }
 
 body {
@@ -16,6 +14,8 @@ body {
   flex-direction: column;
   height: 100vh;
   margin: 0;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 30px;
 }
 
 .calendar {
@@ -30,9 +30,9 @@ body {
     margin: 0.5px;
     background-color: #eee;
     border: 1px solid black;
+    transition: all 0.5s ease-out;
   }
   div:hover {
-    transition: 1s;
     transform: translateY(-20px);
     background-color: pink;
     position: relative;
