@@ -1,11 +1,64 @@
-body {
-  margin: 0;
+
+@mixin display-cenetr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * {
+  margin: 0;
   box-sizing: border-box;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 30px;
 }
 
-@import "var.scss";
-@import "mixins.scss";
-@import "calendar.scss";
+body {
+  @include display-cenetr;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 707px;
+
+  div {
+    @include display-cenetr;
+    width: 100px;
+    height: 100px;
+    margin: 1px;
+    background-color: #eee;
+    border: 1px solid black;
+  }
+  div:hover {
+    transition: 1s;
+    transform: translateY(-20px);
+    background-color: pink;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
+}
+
+$days_month: (28,29,30,31);
+@each $day in $days_month {
+  $hidden-days: $day+1;
+  .calendar-#{$day} :nth-child(n+#{$hidden-days}) {
+    visibility: hidden;
+  }
+}
+
+$week-day:("mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6, "sun":7);
+@each $name-day,$num-day in $week-day {
+  $size: 101px;
+  $margin:($num-day*$size)-$size;
+  .calendar-#{$name-day} :first-child {
+    margin-left: $margin;
+  }
+}
